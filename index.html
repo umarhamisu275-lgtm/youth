@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>YOUTH - Matasa</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;color:#fff;font-family:sans-serif;overflow:hidden}
+.wrap{height:100vh;width:100vw;position:relative}
+video{width:100%;height:100%;object-fit:cover;background:#111}
+.right{position:absolute;right:10px;bottom:130px;display:flex;flex-direction:column;gap:22px;align-items:center;z-index:5}
+.icon{text-align:center}
+.icon button{background:none;border:none;font-size:34px}
+.icon p{font-size:12px;font-weight:700;margin-top:2px}
+.bottom{position:absolute;bottom:70px;width:100%;padding:15px;background:linear-gradient(transparent,rgba(0,0,0,.9));z-index:5}
+.follow{background:#fe2c55;color:#fff;border:none;padding:5px 14px;border-radius:4px;font-weight:800;margin-left:8px}
+.following{background:#fff;color:#000}
+.nav{position:absolute;bottom:0;width:100%;height:60px;background:#000;display:flex;justify-content:space-around;align-items:center;border-top:1px solid #222;z-index:5}
+</style>
+</head>
+<body>
+<div class="wrap">
+<video id="vid" loop autoplay muted playsinline src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"></video>
+<div class="right">
+<div class="icon"><button id="likeBtn" onclick="like()">💜</button><p id="likeCount">128.4K</p></div>
+<div class="icon"><button onclick="alert('Comments - YOUTH V2')">💬</button><p>2.3K</p></div>
+<div class="icon"><button onclick="alert('Shared!')">↗️</button><p>Share</p></div>
+</div>
+<div class="bottom">
+<div><b>@youth.official</b> <button id="followBtn" class="follow" onclick="follow()">Follow</button></div>
+<div style="font-size:13px;margin-top:6px">YOUTH App 🔥 #fyp #mabudinArewa</div>
+</div>
+<div class="nav"><span>🏠</span><span>🔍</span><span style="font-size:30px">+</span><span>💬</span><span>👤</span></div>
+</div>
+<script>
+let liked=false,following=false,count=128400;
+function like(){
+ liked=!liked;
+ document.getElementById('likeBtn').innerText=liked?'❤️':'💜';
+ count+=liked?1:-1;
+ document.getElementById('likeCount').innerText=(count/1000).toFixed(1)+'K';
+}
+function follow(){
+ following=!following;
+ let b=document.getElementById('followBtn');
+ b.innerText=following?'Following':'Follow';
+ b.className=following?'follow following':'follow';
+}
+document.getElementById('vid').addEventListener('click',function(){this.muted=!this.muted});
+</script>
+</body>
+</html>
